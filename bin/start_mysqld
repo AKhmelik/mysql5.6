@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Paths to things
+BASEDIR=/usr/local
+DATADIR=/mysql/data
+INITFILE=/dev/null
+
+# Lazily initialize database if needed
+if [[ ! -f $DATADIR/mysql/db.frm ]]
+then
+
+
+  # Run some additional steps on boot
+  INITFILE=/usr/local/scripts/init.sql
+fi
+
+# Run mysqld_safe in the foreground
+exec mysqld_safe \
+  --defaults-file=$CNFFILE \
+  --datadir=$DATADIR \
+  --init-file=$INITFILE

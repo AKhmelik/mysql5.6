@@ -1,0 +1,2 @@
+CREATE USER 'sroot'@'%' IDENTIFIED BY '12345';
+GRANT ALL PRIVILEGES ON *.* TO 'sroot'@'%';
